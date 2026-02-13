@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video to Text</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <h1 class="logo">Video → Text</h1>
+        <p class="tagline">Upload a video. Get the words. Powered by Whisper.</p>
+        <p class="mode-badge" id="modeBadge">—</p>
+      </header>
+
+      <main class="main">
+        <section class="upload-section">
+          <div id="dropzone" class="dropzone">
+            <input type="file" id="fileInput" accept=".mp4,.webm,.mp3,.mpeg,.mpga,.m4a,.wav" hidden />
+            <div class="dropzone-content" id="dropzoneContent">
+              <svg class="dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <p class="dropzone-text">Drop your video here or <span class="dropzone-browse">browse</span></p>
+              <p class="dropzone-hint">MP4, WebM, MP3, M4A, WAV · Max 200 MB</p>
+            </div>
+            <div class="dropzone-loading" id="dropzoneLoading" hidden>
+              <div class="spinner"></div>
+              <p>Transcribing audio…</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="result-section" id="resultSection" hidden>
+          <h2 class="result-title">Transcript</h2>
+          <div class="result-actions">
+            <button type="button" id="copyBtn" class="btn btn-outline">Copy text</button>
+          </div>
+          <pre id="transcript" class="transcript"></pre>
+        </section>
+
+        <section class="error-section" id="errorSection" hidden>
+          <p id="errorMessage" class="error-message"></p>
+          <button type="button" id="retryBtn" class="btn">Try again</button>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>Uses OpenAI Whisper for high-accuracy transcription</p>
+      </footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

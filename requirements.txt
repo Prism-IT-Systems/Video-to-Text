@@ -1,0 +1,5 @@
+# Local Whisper transcription with speaker diarization (TRANSCRIPTION_MODE=local)
+# Fully local—no build tools (webrtcvad) or external APIs
+faster-whisper>=1.0.0
+librosa>=0.10.0
+scikit-learn>=1.0.0
